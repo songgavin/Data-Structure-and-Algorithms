@@ -63,4 +63,28 @@ public class SegmentTree2 {
             return Math.max(query(root.left, start, mid), query(root.right, mid + 1,end));
         }
     }
+    
+    /*
+     *@param root, index, value: The root of segment tree and 
+     *@ change the node's value with [index, index] to the new given value
+     *@return: void
+     */
+    public void modify(SegmentTreeNode root, int index, int value) {
+        // write your code here
+        if (root == null || index < root.start || index > root.end) return;
+        int mid = root.start + (root.end - root.start) / 2;
+        
+        if (root.start == index && root.end == index) {
+            root.max = value;
+            return;
+        }
+        
+        if (index > mid) {
+            modify(root.right, index, value);
+        } else {
+            modify(root.left, index, value);
+        }
+        
+        root.max = Math.max(root.left.max, root.right.max);
+    }
 }
