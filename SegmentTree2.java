@@ -1,4 +1,5 @@
 /**
+ * http://www.lintcode.com/en/problem/segment-tree-build-ii/
  * Definition of SegmentTreeNode:
  * public class SegmentTreeNode {
  *     public int start, end, max;
