@@ -1,3 +1,4 @@
+// http://www.lintcode.com/en/problem/segment-tree-build/
 /**
  * Definition of SegmentTreeNode:
  * public class SegmentTreeNode {
