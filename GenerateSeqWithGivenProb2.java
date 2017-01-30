@@ -2,43 +2,24 @@ import java.util.*;
 /*
  * The third Question in http://www.1point3acres.com/bbs/thread-218628-1-1.html
  */
-public class GenerateSeqWithGivenProb2 {
-	  /*
-	   * Generate sequence with given probability
-	   * ex: cha = {A, B, C, D}, probability = {0.6, 0.2, 0.1, 0.1}. Binary search.
-	   */
-    char[] charArray;
-    int[] range;
+public class GenerateSeqWithGivenProb {
+      /*
+       * Generate sequence with given probability
+       * ex: cha = {A, B, C, D}, probability = {0.6, 0.2, 0.1, 0.1}. Binary search.
+       */
+    NavigableMap<Integer, Character> map = new TreeMap<>();
     int sum = 0;
     Random rand = new Random();
     public GenerateSeqWithGivenProb(char[] charArray, int[] weights) {
-        this.charArray = charArray;
-        range = new int[weights.length];
         for (int i = 0; i < weights.length; i++) {
-            range[i] = sum;
+            map.put(sum, charArray[i]);
             sum += weights[i];
         }
     }
     
     public char getRandom(){
         int randInt = rand.nextInt(sum);
-        int index = binarySearch(range, randInt);
-        return charArray[index];
-    }
-    
-    public int binarySearch(int[] nums, int target) {
-        int left = 0, right = nums.length - 1;
-        while (left <= right) {
-            int mid = left + (right - left) / 2;
-            if (nums[mid] < target) {
-                left = mid + 1;
-            } else if (nums[mid] > target) {
-                right = mid - 1;
-            } else {
-                return mid;
-            }
-        }
-        return right;
+        return map.get(map.floorKey(randInt));
     }
 
     public static void main(String[] args) {
