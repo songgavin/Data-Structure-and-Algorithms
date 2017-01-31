@@ -13,7 +13,7 @@ public class TwoSumClosest {
                 break;
             }
             
-            int index = binarySearch(nums, i + 1, nums.length - 1, target - nums);
+            int index = binarySearch(nums, i + 1, nums.length - 1, target - nums[i]);
             if (index < nums.length) {
                 if (Math.abs(nums[i] + nums[index]) < minDis) {
                     minDis = Math.abs(nums[i] + nums[index]);
@@ -66,5 +66,9 @@ public class TwoSumClosest {
             }
         }
         return right;
+    }
+    public static void main(String[] args) {
+        int[] nums = {1, 5, 6, 8, 10};
+        System.out.println(Test.twoSumSmaller(nums, 2));
     }
 }
