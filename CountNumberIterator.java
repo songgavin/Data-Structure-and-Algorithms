@@ -1,4 +1,5 @@
 // fourth question in http://www.1point3acres.com/bbs/thread-217004-1-1.html
+// In this question, we check and change index and count in hasNext() method.
 public class CountNumberIterator {
 
     int[] nums;
