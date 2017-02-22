@@ -1,0 +1,41 @@
+// Second question on http://www.1point3acres.com/bbs/thread-228275-1-1.html
+public class MinimumMaxGap {
+    public int minimumMaxGap(int[] nums, int k) {
+        if (nums.length <= 1) return 0;
+
+        int left = 1;
+        int right = 0;
+        for (int i = 1; i < nums.length; i++) {
+            right = Math.max(nums[i] - nums[i - 1], right);
+        }
+
+
+        while (left <= right) {
+            
+            int mid = left + (right - left) / 2;
+            if (isValid(nums, mid, k)) {
+                right = mid - 1;
+            } else {
+                left = mid + 1;
+            }
+        }
+        return left;
+    }
+
+    private boolean isValid(int[] nums, int gap, int k) {
+        int count = 0;
+        for (int i = 1; i < nums.length; i++) {
+            count += (nums[i] - nums[i - 1]) / gap;
+            if (count > k) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static void main(String[] args) {
+        MinimumMaxGap m = new MinimumMaxGap();
+        int[] test1 = {2, 5, 10};
+        System.out.println(m.minimumMaxGap(test1, 3));
+    }
+}
