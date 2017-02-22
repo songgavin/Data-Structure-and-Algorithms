@@ -1,5 +1,5 @@
 import java.util.*;
-
+// First question in http://www.1point3acres.com/bbs/thread-228275-1-1.html
 public class IntervalArea {
 
     public static double intervalCoverSize(double[][] intervals) {
